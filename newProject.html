@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="newproject.css" />
+</head>
+<body>
+  <div id="wh">
+    <input type="button" id="level_a" value="Level A" onclick="func(4)">
+    <br>
+    <input type="button" id="level_b" value="Level B" onclick="func(7)">
+  </div>
+  <div id="all" style="visibility:hidden;">
+    <div id="alll">
+      <img id="star1" />
+      <img id="star2" />
+      <img id="star3" />
+      <div id="lookfor"></div>
+      <img id="pause" src="pause.gif" onclick="Stop()" alt="">
+      <div id="points">
+      <p id="pointsss"></p>
+      <p id="pointss"></p>
+      </div>
+
+    </div>
+
+    <div id="board"></div>
+    <div id="timer"></div>
+    <div id="results">
+    <input type="button" value="Try again!" id="try" />
+    </div>
+  </div>
+  
+  <script>
+    let cnt = 0;
+    let k;//גודל המטריצה
+    let span;
+    let newRow;
+    let numbers;
+    let flag = false;
+    function Stop() 
+    {
+      let t=document.querySelectorAll(".square")
+      if (!flag) 
+      {
+        document.querySelector("#timer").style.animationPlayState = 'paused';
+        document.querySelector("#results").style.animationPlayState = 'paused';
+        flag = true;
+        document.getElementById("board").style.opacity=0;
+      }
+      else {
+        document.querySelector("#timer").style.animationPlayState = 'running';
+        flag = false;
+        document.querySelector("#results").style.animationPlayState = 'running';
+        document.getElementById("board").style.opacity=1;
+      }
+    }
+    function func(k) 
+    {
+      document.getElementById("wh").remove();
+      document.getElementById("all").style = "visibility: visible";
+      start(k);
+    }
+
+    function rim()
+    {
+      event.target.remove();
+    }
+    function start(k) 
+    {
+      let name=localStorage.getItem("name")
+      document.getElementById("pointsss").innerHTML=name+":"
+      let rand1 = Math.floor(Math.random() * (k * 10)) + 1;//רינדום מספר ללמעלה-המספר שצריך למצוא
+      let ri = Math.floor(Math.random() * k) + 1;//אינדקס למספר שלמעלה
+      let rj = Math.floor(Math.random() * k) + 1;//כנ"ל
+      let numid;//האינדקס שבו נמצא האיבר שאותו מחפשים
+      document.getElementById("lookfor").innerHTML = rand1;//מכניס ללוק פור את המספר שצריך לחפש שם הוא יוצג בגדול
+      let board = document.getElementById("board");//משתנה שבו שמרתי את בורד מה body
+      for (let i = k; i >= 1; i--)//לולאה שיוצרת את השורות 
+      {
+        newRow = document.createElement("div");//יוצר אלמנט מסוג דיב כל השורות הם דיבים
+        newRow.classList.add("row");//הקלאס של השורה שנוצרה הוא ROW
+        board.appendChild(newRow);//השורה שנוצרה היא נהיית הילד של הלוח
+        for (let j = k; j >= 1; j--)//לולאה שיוצרת את העמודות
+        {
+          let numbers = i * k - j + 1;//חישוב בשביל האי די של התא
+          span = document.createElement("span");//יוצרת אובייקט מסוג ספאן ומכניסה למשתנה
+          if (k == 4)//אם קיי שווה ארבע זה אומר שהוא בשלב הראשון
+          {
+            span.classList.add("square");//הוא שייך לקלאס סקוואר
+          }
+          if (k == 7)//אם קיי שווה שבע זה אומר שהוא בשלב השני של המשחק
+          {
+            span.classList.add("square7");//הוא שייך לקלאס סקוואר שבע
+          }
+          span.setAttribute("id", "a" + numbers);//יוצרת אי די למשתנה 
+          newRow.appendChild(span);//מגדירה אותו בתור הילד של השורה שבא הוא נמצא
+          if (k == 10)//זה אומר שאתה בשלב השלישי של המשחק
+          {
+            span.classList.add("square10");//אתה שייך לסקוואר עשר
+          }
+          let rand2 = Math.floor(Math.random() * (k * 10)) + 1;//רינדום מספר להכנסה לתא במטריצה
+          while (rand1 == rand2)//כל עוד את השווה למספר שצריך למצוא תמשיך לרנדם מספרים אחרים כי לא רוצים שהוא יופיע יותר מפעם אחת במטריצה
+            rand2 = Math.floor(Math.random() * (k * 10)) + 1;
+          span.textContent = rand2;//ספאן יכיל את המספר המרונדם 
+          if (ri == i && rj == j)//אם התא שבו אני נמצאת שווה לתא שאליו רציתי להכניס את המספר שאני צריכה למצוא
+          {
+            span.textContent = rand1;//התא יכיל את המספר המבוקש
+            numid = numbers;//עכשיו יהיה שמור לי במשתנה נאמאידי   
+          }
+          document.getElementById("a" + numbers).addEventListener("click", rim);
+        }//סוגרת פור פנימי
+      }//סוגרת פור חיצוני
+      document.getElementById("a" + numid).addEventListener("click", chek);//אם הוא לוחץ על התא הנכון זאת אומרת על המספר המבוקש לך לפונקצייה צאק
+      function chek() {
+        cnt += 100;
+        document.getElementById("pointss").innerHTML = cnt;//לך לדיב סי ותשים בו את מספר הנקודות 
+        document.getElementById("board").innerHTML = "";//לך לבורד תאתחל לי אותו לריק
+        if (cnt == 400)//זה אומר שהוא סיים שלב ראשון בהצלחה
+        {
+          k = 7;//ככשיו נצטרך להגדיר מטריצה גדולה יותר שבע על שבע
+          document.getElementById("star1").src = "star1.gif";//תשנה את הדיב הריק לתמונת כוכב
+        }
+        if (cnt == 700)//זה אומר שהוא סיים שלב שני בהצלחה
+        {
+          k = 10;//עכשיו נצטרך להגדיר מטריצה גדולה יותר עשר על עשר
+          document.getElementById("star2").src = " star1.gif";
+        }
+        if (cnt == 1000)//זה אומר שהוא סיים שלש שלישי בהצלחה
+        {
+          document.getElementById("star3").src = "star1.gif";
+        }
+        if (cnt == 1300)//הוא סיים שלב רביעי בהצלחה
+        {
+          document.body.style.backgroundImage='url("minion.gif")';
+          document.getElementById("all").remove();
+          let dv=document.createElement("div");
+          dv.setAttribute("id","win");
+          document.body.appendChild(dv);
+          document.getElementById("win").innerHTML="winner";
+        }
+        start(k);//שולחת שוב לפונקציה
+      }
+    }
+    console.log(span);
+    document.getElementById("try").addEventListener('click', function ()//אם סיימתי או נכשלתי יש לי אפשרות לנסות שוב 
+    {
+      window.open("newProject.html");
+    })
+    
+  </script>
+</body>
+
+</html>

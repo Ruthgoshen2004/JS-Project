@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="projectjs.css" />
+   
+</head>
+<body>
+    <input type="image" id="loggin" src="איקון הרשמה.png" onclick="logine()"/>    
+    <a href="newProject.html"><img id="t" src="אייקון פליי.png"/></a>
+    <div  id="container">
+    <h1 id="h1"></h1>
+    <h2>SearchNum</h2>
+    <p>Stay updated with our newsletter</p>
+    <form onsubmit="funcc()" action="explain.html">
+    <input type="text" id="t1" placeholder="Enter your name" >
+    <br>
+     <input type="submit" id="t2" value="Suscribe">
+    </form>
+    </div>
+ 
+	<script>
+		function logine()//קישור לטופס
+{
+  document.getElementById("container").style.display="inline-block";
+  let arrUser; 
+} 
+document.getElementById ("t2").addEventListener("click",function()
+{
+localStorage.setItem("name",document.getElementById("t1").value);
+})
+  let i=localStorage.getItem("name");
+document.getElementById("h1").innerHTML="Welcom To "+ i;
+function funcc()
+{
+      if(document.getElementById('name').value=="")
+      {
+        alert("Please enter user name");
+        document.getElementById('name').focus()
+        return false;
+      }
+      return true;
+}
+
+</script>
+</body>
+</html>

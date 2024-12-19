@@ -1,0 +1,335 @@
+
+body
+{
+  height: 100%;
+   width: 99%;
+   background-image:url('reka.jpg');
+   background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+.square ,#h
+{
+    width: 11vw;
+    height: 18vh;
+    font-size: 3rem; 
+    font-family: "Play", sans-serif;
+    display: inline-block;
+    text-shadow: 0 0 10px #ff4af6a8, 0 0 20px #88379ca8, 0 0 20px #ef00e3a8,
+    0 0 20px #ef00e3a8, 0 0 2px #00557d, 2px 2px 2px #54ccdb;
+    color: #e9cbf5;
+    animation: ronis-scale alternate  1s linear infinite;  
+}
+   @keyframes ronis-scale
+   {
+     0% {transform: scale(1);}
+
+     100% {transform: scale(1.5);}
+   }
+  .square7
+   {
+    font-size: 2rem; 
+    width: 80px;
+    height: 70px;
+    display: inline-block;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, "Play";
+    display: inline-block;
+    text-shadow: 0 0 2px #ff4af6a8, 0 0 5px #88379ca8, 0 0 3px #ef00e3a8,
+    0 0 15px #e27bdda8, 0 0 2px #e7e7e7, 2px 2px 2px #54ccdb;
+    color: #e9cbf5;
+    transition: 0.5s ease-in-out;
+    animation: loader 2s infinite;
+    }       
+    @keyframes loader 
+    {
+      0% {rotate: 0deg;}
+      
+      50% {rotate: 180deg;}
+      
+      100% {rotate: 360deg;}
+    } 
+    .square10
+    {
+      font-size: 1rem; 
+      width: 60px;
+      height: 50px;
+      display: inline-block;
+      text-align: center;
+      font-family: Verdana, Geneva, Tahoma, sans-serif, "Play";
+      display: inline-block;
+      text-shadow: 0 0 2px #ff4af6a8, 0 0 5px #88379ca8, 0 0 3px #ef00e3a8,
+      0 0 15px #e27bdda8, 0 0 2px #e7e7e7, 2px 2px 2px #54ccdb;
+      color: #e9cbf5;
+    }  
+    #finish
+    {
+      font-family: "Play", sans-serif;
+      font-size: 3rem; 
+      color: #e9cbf5;
+      text-shadow: 0 0 10px #ff4af6a8, 0 0 20px #88379ca8, 0 0 20px #ef00e3a8,
+      0 0 20px #ef00e3a8, 0 0 2px #00557d, 2px 2px 2px #54ccdb;
+    }
+    #lookfor
+    {
+      width: 20vw;
+      margin: 0;
+      text-align: center; 
+      border: 1px solid white;
+      font-size: 5rem;
+      font-family: "Play", sans-serif;
+      display: inline-block;
+      text-shadow: 0 0 10px #ff4af6a8, 0 0 20px #88379ca8, 0 0 20px #ef00e3a8,
+      0 0 20px #ef00e3a8, 0 0 2px #00557d, 2px 2px 2px #54ccdb;
+      color: #e9cbf5;
+      margin-bottom: 3%;
+      margin-left: 15vw;
+    }
+    #timer 
+    {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      line-height: 3rem;
+      height: 2rem;
+      text-align: center;
+      animation: timeline 100s linear;
+      mix-blend-mode: difference;
+      font-size: 2rem;
+      width: 100%;
+      color: white;
+      background: black;
+    }
+  @keyframes timeline 
+  {
+    0% {width: 100%;background: rgba(255, 0, 170, 0.778);}
+   50% {width: 50%;brackground: rgb(255, 1, 242);}
+   100% {width: 0%;background: rgb(255, 244, 255);}
+  }
+  #timer::before
+  {
+   content: "";
+   width: 100%;
+   /* background: rgb(255, 255, 255); */
+   position: absolute;
+   height: 100%;
+   top: 0;
+   left: 0;
+   z-index: -1;
+   /* animation: timeline 100s linear; */
+   animation-fill-mode: forwards;
+  }
+  #timer::after 
+  {
+  font-weight: bold;
+  }
+  #results 
+  {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   width: 0;
+   height: 0;
+   overflow: hidden;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: 100% 100%;
+   background-image: url("game\ over2.jpg"); 
+   animation: showResults 0.25s linear;
+   animation-fill-mode: forwards;
+   animation-delay: 100s;
+  }
+  @keyframes showResults 
+  {
+   from {width: 0;height: 0;}
+   to {width: 100vw;height: 100vh;}
+  }  
+  #all 
+  {
+    display: flex;
+    flex-direction: column; 
+    flex-wrap:nowrap;  
+    justify-content: space-around; 
+    text-align: center;
+  }
+  #alll
+  {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3vh;
+  }
+  #allbig
+  {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+  } 
+  #star1,#star2,#star3
+  {
+    width: 6vw;
+    height: 12vh;
+    margin-top: 2%;
+    border: none;
+    margin-left: 2vw;
+  }
+  #points
+  {
+    font-size: 70px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 1px solid white;
+    color: #000000;
+    margin-right: 1vw;
+    right: 1vw;
+    width: 13vw;
+    height: 20vh;
+    margin-left: 21vw;
+    text-shadow: 0 0 10px #ff4af6a8, 0 0 20px #88379ca8, 0 0 20px #ef00e3a8,
+    0 0 20px #ef00e3a8, 0 0 2px #00557d, 2px 2px 2px #54ccdb;
+  }
+  #pointss
+  {
+margin-top: 2vh;
+  }
+  #pointsss
+  {
+    margin-top: 0.5vh;
+    margin-top: 1vh;
+    font-size: 25px;
+  }
+ #level_a
+ {
+  width: 40vw;
+  height: 10vh;
+  border-radius: 5px;
+  background-color: rgb(246, 232, 246);
+  box-shadow: 0 4px 7px 0 rgba(180, 125, 174, 0.2), 0 6px 20px 0 rgba(241, 125, 220, 0.2);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: xx-large;
+  margin: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
+  text-shadow: 0 0 10px #ff4af6a8, 0 0 20px #88379ca8, 0 0 20px #ef00e3a8,
+  0 0 20px #ef00e3a8, 0 0 2px #00557d, 2px 2px 2px #54ccdb;  
+  }
+ #level_b
+ {
+  width: 40vw;
+  height: 10vh;
+  border-radius: 5px;
+  background-color: rgb(244, 236, 244);
+  box-shadow: 0 4px 7px 0 rgba(180, 125, 174, 0.2), 0 6px 20px 0 rgba(241, 125, 220, 0.2);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: xx-large;
+  margin-top: 7%;
+  margin-left: 15%;
+  margin-right: 15%;
+  text-shadow: 0 0 10px #ff4af6a8, 0 0 20px #88379ca8, 0 0 20px #ef00e3a8,
+  0 0 20px #ef00e3a8, 0 0 2px #00557d, 2px 2px 2px #54ccdb;
+ }
+#level_b:hover
+{
+  background-color: rgb(238, 163, 240);
+}
+#level_a:hover
+{
+  background-color: rgb(238, 163, 240);
+}
+#wh
+{
+margin: 20vh;
+margin-left: 20vw;
+justify-content: center;
+text-align: center;
+width: 60vw;
+height: 50vh;
+background-color:rgb(10, 0, 34) ;
+box-shadow: 0 10px 10px 0 rgba(180, 125, 174, 0.2), 0 10px 20px 0 rgba(241, 125, 220, 0.2);
+}
+#pause{
+  width: 20px;
+  height: 20px;
+}
+ #exp
+ {
+  margin-left: 30%;
+  direction: ltr;
+  font-size: 23px;
+  font-family: sans-serif;
+  color: white;
+  border-color: white;
+  border-style: double;
+  width: 40vw;
+  margin-top: 1%;
+ }
+ h1
+ {
+direction: ltr;
+margin-left: 45%;
+margin-top: 5%;
+margin-bottom: 12%;
+}
+p
+{
+margin: 3%;
+}
+#b
+{
+  margin-left: 30.1%;
+  margin-top: 1%;
+  width: 40vw;
+  background-color: white;
+  height: 5vh;
+  color: blue;
+  font-size: larger;
+  font-family: sans-serif;
+}
+#h{
+  margin-left: 30vw;
+}
+#play{
+  margin-left: 18vw;
+  text-decoration: none;
+
+}
+#playy{
+   margin-left: 30%;
+  direction: ltr;
+  font-size: 23px;
+  font-family: sans-serif;
+  color: white;
+  border-color: white;
+  border-style: double;
+  width: 40vw;
+  margin-top: 1%;
+}
+#try
+{
+  margin-top: 80vh;
+  width:15vw;
+  height: 15vh;
+  background-color:rgb(226, 214, 253) ;
+  box-shadow: 0 10px 10px 0 rgba(180, 125, 174, 0.2), 0 10px 20px 0 rgba(241, 125, 220, 0.2);
+  color:rgb(55, 0, 102) ;
+  text-shadow: 0 0 10px #ff4af6a8, 0 0 20px #88379ca8, 0 0 20px #ef00e3a8,
+  0 0 20px #ef00e3a8, 0 0 2px #00557d, 2px 2px 2px #54ccdb;
+  font-size: large;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#win
+{
+  font-size: 400px;
+  color: gold;
+  text-shadow: 0 10px 10px 0 rgba(180, 125, 174, 0.2), 0 10px 20px 0 rgba(241, 125, 220, 0.2);
+  width: 30vw;
+  height: 40vh;
+  margin-left: 50vw-(30vw/2);
+}
+#pause
+{
+   width: 5vw;
+   height: 10vh;
+   border: 1px solid white;
+}
+     
